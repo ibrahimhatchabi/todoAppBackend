@@ -36,7 +36,8 @@ public class UserController {
 
     @PostMapping("/authenticate")
     Boolean authenticate(@RequestBody User user) {
-        return repository.findByUserNameAndPassword(user.getUserName(), user.getPassword());
+        User fetchedUser = repository.findByUserNameAndPassword(user.getUserName(), user.getPassword());
+        return fetchedUser != null;
     }
 
     // Single item
